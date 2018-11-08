@@ -23,7 +23,7 @@ Your deliverables for the challenge have to fulfill the below requirements:
 #Bonus
 
 - Well documented readme to run the project
-- Build docker containers to run the projec tlocally on docker.
+- Build docker containers to run the project locally on docker.
 - Have automatic deployments set up on a successful pipeline on GitHub or Gitlab
 - Build CI/CD using gitlab pipeline that deploys to AWS Free tier account. 
 - Build automated test.
