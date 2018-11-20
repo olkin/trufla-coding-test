@@ -20,7 +20,7 @@ Your deliverables for the challenge have to fulfill the below requirements:
 
 - The frontend can be built with any front-end framework of your choice (preferably ember.js).
 
-#Bonus
+# Bonus
 
 - Well documented readme to run the project
 - Build docker containers to run the project locally on docker.
