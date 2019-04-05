@@ -1,6 +1,6 @@
 # Ruby Challenge
 
-Create a database populated by a seeds.rb file you write using https://github.com/stympy/faker/blob/master/doc/v1.9.1/commerce.md
+Create a database populated by a seeds.rb file you write using https://github.com/stympy/faker/blob/master/doc/default/commerce.md
 
 The requirements for this Application are:
 
