@@ -1,6 +1,27 @@
-# Ruby Challenge
+# ReactJS Challenge
 
-Create a database populated by a seeds.rb file you write using https://github.com/stympy/faker/blob/master/doc/default/commerce.md
+Create a database populated with data using a schema similar to below:
+
+| Table | Field |
+| ------ | ------ |
+| Departments | name |
+
+| Table | Field |
+| ------ | ------ |
+| Products | name |
+|  | price |
+|  | department_id |
+
+| Table | Field |
+| ------ | ------ |
+| ProductsPromotions | product_id |
+|  | promotion_id |
+
+| Table | Field |
+| ------ | ------ |
+| Promotions | code |
+|  | active |
+|  | discount |
 
 The requirements for this Application are:
 
@@ -10,19 +31,19 @@ The requirements for this Application are:
 
 - Promotion filter: User can filter products that have the entered promotion_code.
 
-- Simple partial text search on product name (no need to implement complex text, search SQL "like" or similar is enough)
+- Simple partial text search based on product name
 
 - Based on these requirements we need to have a working prototype.
 
 Your deliverables for the challenge have to fulfill the below requirements:
 
-- The backend has to be built as a consumable API using Ruby on Rails
+- The backend has to be built as a consumable API using a suitable backend e.g. NodeJS, Rails
 
-- The frontend can be built with any front-end framework of your choice (preferably ember.js).
+- The frontend should be built using ReactJS.
 
 # Bonus
 
-- Well documented readme to run the project
-- Build docker containers to run the project locally on docker.
-- Build CI/CD using gitlab / github pipeline that deploys to AWS Free tier account. 
-- Build automated test.
+- Well documented readme to run the project 
+- Create the frontend using separate components utilizing React Hooks
+- Style the frontend using React styled components
+- Add backend and frontend tests utilizing jest
