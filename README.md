@@ -47,3 +47,4 @@ Your deliverables for the challenge have to fulfill the below requirements:
 - Create the frontend using separate components utilizing React Hooks
 - Style the frontend using React styled components
 - Add backend and frontend tests utilizing jest
+- Dockerize backend and frontend and make it easy to start the project using `docker compose`
