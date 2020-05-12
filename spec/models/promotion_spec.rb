@@ -52,4 +52,30 @@ describe Promotion do
       end
     end
   end
+
+  describe 'associations' do
+    describe '#products' do
+      subject { promotion.products }
+      let(:promotion) { create :promotion }
+      let(:product) { create :product }
+
+      before do
+        product.promotions << promotion
+      end
+
+      it { is_expected.to match_array([product])}
+    end
+  end
+
+  describe 'scope' do
+    describe '.active/.deactivated' do
+      let!(:promotion) { create :promotion }
+      let!(:deactivated_promotion) { create :promotion, :deactivated }
+
+      it 'returns corresponding promotions' do
+        expect(Promotion.active).to eq [promotion]
+        expect(Promotion.deactivated).to eq [deactivated_promotion]
+      end
+    end
+  end
 end

@@ -56,5 +56,21 @@ describe Product do
 
       it { is_expected.to be_a Department }
     end
+
+    describe '#active_promotions' do
+      let(:product) { create :product }
+      let(:active_promotion) { create :promotion }
+      let(:deactivated_promotion) { create :promotion, :deactivated }
+
+      before do
+        product.promotions << deactivated_promotion
+        product.promotions << active_promotion
+      end
+
+      it 'returns only active promotions' do
+        expect(product.promotions).to match_array([active_promotion, deactivated_promotion])
+        expect(product.active_promotions).to match_array(active_promotion)
+      end
+    end
   end
 end
