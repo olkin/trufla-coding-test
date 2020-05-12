@@ -1,3 +1,3 @@
-Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
-  load seed
+['department_seeds.rb', 'product_seeds.rb'].each do |seed_name|
+  load File.join(Rails.root, 'db', 'seeds', seed_name)
 end
