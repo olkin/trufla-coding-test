@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 2020_05_12_202247) do
   end
 
   create_table "promotions", force: :cascade do |t|
-    t.string "code"
+    t.string "code", null: false
     t.boolean "active"
-    t.decimal "discount"
+    t.decimal "discount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
