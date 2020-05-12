@@ -21,7 +21,7 @@ class Products extends React.Component {
             .catch(() => this.props.history.push("/"));
     }
 
-
+X
     render() {
         return (
             <div>
