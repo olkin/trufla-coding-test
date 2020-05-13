@@ -7,7 +7,6 @@ class Api::V1::ProductsController < ApplicationController
     @products = @products.includes(:active_promotions, :department)
     @products = @products.page(params[:page]).per(PER_PAGE)
 
-    puts @products.inspect
     render json: {
         products: @products.as_json(include: [:department, :active_promotions]),
         meta:     { total_count: @products.total_count, limit: PER_PAGE }
