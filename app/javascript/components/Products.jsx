@@ -4,6 +4,7 @@ import Product from "./Product";
 const Products = (props) => {
     return (
         <div>
+            Results: {props.products.length}/{props.total}
             {props.products.map((product) =>
                 <Product key={product.id}
                          name={product.name}

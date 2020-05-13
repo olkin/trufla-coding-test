@@ -9,7 +9,8 @@ class Main extends React.Component {
         page: 1,
         department: '',
         promoCode: '',
-        productName: ''
+        productName: '',
+        productTotal: 0
     };
 
     constructor(props) {
@@ -29,6 +30,7 @@ class Main extends React.Component {
             })
             .then(response => this.setState({
                 data: response.products,
+                productTotal: response.meta.total_count,
                 pageCount: Math.ceil(response.meta.total_count / response.meta.limit)
             }))
     }
@@ -70,6 +72,7 @@ class Main extends React.Component {
                 />
                 <Products
                     products={this.state.data}
+                    total={this.state.productTotal}
                 />
                 <ReactPaginate
                     previousLabel={'previous'}
