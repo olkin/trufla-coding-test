@@ -2,6 +2,7 @@ class ProductFilterService
   AVAILABLE_FILTERS = ['department_id', 'active_promo_code', 'product_name']
 
   def initialize(filters = {})
+    puts 'here'
     @products = Product.all
     set_filters(filters)
   end
