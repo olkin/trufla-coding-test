@@ -2,7 +2,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   PER_PAGE = 20
 
   def index
-    @products = ProductFilterService.new.filter(filter_params)
+    @products = ProductFilterService.new(filter_params).results
     @products = @products.order(created_at: :desc)
     @products = @products.includes(:active_promotions, :department)
     @products = @products.page(params[:page]).per(PER_PAGE)
@@ -16,6 +16,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   private
 
   def filter_params
-    params.slice(:department_id, :active_promo_code, :product_name)
+    params.permit(:page, :department_id, :active_promo_code, :product_name)
+        .slice(:department_id, :active_promo_code, :product_name).to_h
   end
 end

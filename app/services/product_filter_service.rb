@@ -1,35 +1,36 @@
 class ProductFilterService
-  attr_reader :products
+  AVAILABLE_FILTERS = ['department_id', 'active_promo_code', 'product_name']
 
-  def initialize
+  def initialize(filters = {})
     @products = Product.all
+    set_filters(filters)
   end
 
-  def filter(params)
-    params.each do |param_name, param_value|
-      send("filter_by_#{param_name}", param_value)
-    end
-
-    @products
+  def results
+    filters.each { |filter, filter_value| send(filter, filter_value) }
+    products
   end
 
   private
 
-  def filter_by_department_id(department_ids)
-    return if department_ids.blank?
+  attr_reader :products, :filters
 
+  def set_filters(new_filters)
+    @filters ||= new_filters
+                     .slice(*AVAILABLE_FILTERS)
+                     .reject{|_filter, filter_value| filter_value.blank?}
+                     .map{|filter, filter_value| ["filter_by_#{filter}", filter_value] }
+  end
+
+  def filter_by_department_id(department_ids)
     @products = @products.where(department_id: department_ids)
   end
 
   def filter_by_active_promo_code(promo_code)
-    return if promo_code.blank?
-
     @products = @products.includes(:promotions).where(promotions: { code: promo_code, active: true })
   end
 
   def filter_by_product_name(product_name)
-    return if product_name.blank?
-
     @products = @products.where('name LIKE ?', "%#{product_name}%")
   end
 end
