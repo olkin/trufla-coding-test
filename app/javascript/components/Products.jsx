@@ -8,7 +8,9 @@ const Products = (props) => {
                 <Product key={product.id}
                          name={product.name}
                          price={product.price}
-                         promotion={product.active_promotions[0]}/>
+                         promotion={product.active_promotions[0]}
+                         department={product.department.name}
+                />
             )}
         </div>
     );

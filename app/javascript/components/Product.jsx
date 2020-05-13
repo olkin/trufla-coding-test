@@ -7,7 +7,7 @@ const Product = (props) => {
 
     return (
         <div>
-            {props.name} ${props.price} {props.promotion?.code} {discount} ${discountedPrice}
+            {props.department} <strong>{props.name}</strong> ${props.price} {props.promotion?.code} {discount} ${discountedPrice}
         </div>
     );
 }
