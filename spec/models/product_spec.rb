@@ -60,16 +60,19 @@ describe Product do
     describe '#active_promotions' do
       let(:product) { create :product }
       let(:active_promotion) { create :promotion }
+      let(:new_active_promotion) { create :promotion }
       let(:deactivated_promotion) { create :promotion, :deactivated }
 
       before do
         product.promotions << deactivated_promotion
+        product.promotions << new_active_promotion
         product.promotions << active_promotion
       end
 
       it 'returns only active promotions' do
-        expect(product.promotions).to match_array([active_promotion, deactivated_promotion])
-        expect(product.active_promotions).to match_array(active_promotion)
+        expect(product.promotions).to match_array([new_active_promotion, active_promotion, deactivated_promotion])
+        expect(product.active_promotions).to match_array([active_promotion, new_active_promotion])
+        expect(product.active_promotion).to eq new_active_promotion
       end
     end
   end
