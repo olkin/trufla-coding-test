@@ -1,18 +1,20 @@
 import React from "react";
 import Products from "./Products";
 import ReactPaginate from 'react-paginate';
+import ProductFilter from "./ProductFilter";
 
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
-            page: 2
+            page: 1,
+            department: ''
         }
     }
 
     loadProductsFromServer() {
-        const url = `/api/v1/products?page=${this.state.page}`;
+        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}`;
 
         fetch(url)
             .then(response => {
@@ -37,11 +39,23 @@ class Main extends React.Component {
         });
     };
 
+    handleFilterSubmit = ({department}) => {
+        this.setState({ department: department }, () => {
+            this.loadProductsFromServer();
+        });
+    };
+
     render() {
         return (
             <>
                 <h1>Products</h1>
-                <Products products={this.state.data} />
+                <ProductFilter
+                    onSubmit={this.handleFilterSubmit}
+                    department={this.state.department}
+                />
+                <Products
+                    products={this.state.data}
+                />
                 <ReactPaginate
                     previousLabel={'previous'}
                     nextLabel={'next'}
