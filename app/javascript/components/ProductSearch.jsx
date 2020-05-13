@@ -3,7 +3,7 @@ import Products from "./Products";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
 
-class Main extends React.Component {
+class ProductSearch extends React.Component {
     initialState = {
         data: [],
         page: 1,
@@ -92,5 +92,5 @@ class Main extends React.Component {
     }
 }
 
-export default Main;
+export default ProductSearch;
 

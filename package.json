@@ -1,6 +1,14 @@
 {
   "name": "code-challenge",
   "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "spec/javascript"
+    ]
+  },
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
     "@rails/webpacker": "5.1.1",
@@ -12,6 +20,8 @@
     "react_ujs": "^2.6.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.0.4",
+    "jest": "^26.0.1",
     "webpack-dev-server": "^3.11.0"
   }
 }

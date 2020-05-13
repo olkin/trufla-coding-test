@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from "../components/Main";
+import ProductSearch from "../components/ProductSearch";
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
-        <Main />,
+        <ProductSearch />,
         document.body.appendChild(document.createElement('div')),
     )
 })

@@ -1,15 +1,31 @@
 import React from "react";
 
-const Product = (props) => {
-
-    const discountedPrice = props.promotion
-        ? (props.price - props.price * props.promotion.discount/100).toFixed(2)
-        : props.price;
+const Product = ({department, name, price, promoCode, discount}) => {
+    const priceWithDiscount = (price, discount) =>
+        (price - price * discount/100).toFixed(2);
+    
+    const discountedPrice = discount ? priceWithDiscount(price, discount) : '';
 
     return (
         <div>
-            {props.department}
-            <strong>{props.name}</strong> ${props.price} {props.promotion?.code} {props.promotion?.discount} ${discountedPrice}
+            <span className="product__department">
+                {department}
+            </span>
+            <span className="product__name">
+                {name}
+            </span>
+            <span className="product__price">
+                ${price}
+            </span>
+            <span className="product__promo_code">
+                {promoCode}
+            </span>
+            <span className="product__discount">
+                {discount}
+            </span>
+            <span className="product__discounted_price">
+                ${discountedPrice}
+            </span>
         </div>
     );
 }
