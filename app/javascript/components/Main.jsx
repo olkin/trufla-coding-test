@@ -4,15 +4,17 @@ import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
 
 class Main extends React.Component {
+    initialState = {
+        data: [],
+        page: 1,
+        department: '',
+        promoCode: '',
+        productName: ''
+    };
+
     constructor(props) {
         super(props);
-        this.state = {
-            data: [],
-            page: 1,
-            department: '',
-            promoCode: '',
-            productName: ''
-        }
+        this.state = this.initialState;
     }
 
     loadProductsFromServer() {
@@ -47,12 +49,21 @@ class Main extends React.Component {
         });
     };
 
+    handleFilterReset = (event) => {
+        event.preventDefault();
+        this.setState(this.initialState, () => {
+            this.loadProductsFromServer();
+        });
+    }
+
+
     render() {
         return (
             <>
                 <h1>Products</h1>
                 <ProductFilter
                     onSubmit={this.handleFilterSubmit}
+                    onReset={this.handleFilterReset}
                     department={this.state.department}
                     promoCode={this.state.promoCode}
                     productName={this.state.productName}

@@ -63,6 +63,7 @@ class ProductFilter extends React.Component {
                         <input type="text" name="productName" value={this.state.productName} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
+                    <button onClick={this.props.onReset}>Reset</button>
                 </form>
             </div>
         );
