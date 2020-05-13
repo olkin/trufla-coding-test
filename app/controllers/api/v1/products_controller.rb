@@ -5,6 +5,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
     @products = Product.order(created_at: :desc)
     @products = @products.where(department_id: params[:department_id]) if params[:department_id].present?
     @products = @products.where(promotions: { code: params[:promo_code] }) if params[:promo_code].present?
+    @products = @products.where('name LIKE ?', "%#{params[:product_name]}%") if params[:product_name].present?
     @products = @products.includes(:active_promotions, :department)
     @products = @products.page(params[:page]).per(PER_PAGE)
 

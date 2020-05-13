@@ -6,6 +6,7 @@ class ProductFilter extends React.Component {
         this.state = {
             department: props.department,
             promoCode: props.promoCode,
+            productName: props.productName,
             departments: []
         };
 
@@ -32,7 +33,11 @@ class ProductFilter extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit({department: this.state.department, promoCode: this.state.promoCode});
+        this.props.onSubmit({
+            department: this.state.department,
+            promoCode: this.state.promoCode,
+            productName: this.state.productName
+        });
     }
 
     render() {
@@ -52,6 +57,10 @@ class ProductFilter extends React.Component {
                     <label>
                         Add promo code
                         <input type="text" name="promoCode" value={this.state.promoCode} onChange={this.handleChange} />
+                    </label>
+                    <label>
+                        Add product name
+                        <input type="text" name="productName" value={this.state.productName} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>

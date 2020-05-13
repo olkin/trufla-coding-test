@@ -10,12 +10,13 @@ class Main extends React.Component {
             data: [],
             page: 1,
             department: '',
-            promoCode: ''
+            promoCode: '',
+            productName: ''
         }
     }
 
     loadProductsFromServer() {
-        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}&promo_code=${this.state.promoCode}`;
+        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}&promo_code=${this.state.promoCode}&product_name=${this.state.productName}`;
 
         fetch(url)
             .then(response => {
@@ -40,8 +41,8 @@ class Main extends React.Component {
         });
     };
 
-    handleFilterSubmit = ({department, promoCode}) => {
-        this.setState({ department: department, promoCode: promoCode }, () => {
+    handleFilterSubmit = ({department, promoCode, productName}) => {
+        this.setState({ department: department, promoCode: promoCode, productName: productName, page: 1 }, () => {
             this.loadProductsFromServer();
         });
     };
@@ -54,6 +55,7 @@ class Main extends React.Component {
                     onSubmit={this.handleFilterSubmit}
                     department={this.state.department}
                     promoCode={this.state.promoCode}
+                    productName={this.state.productName}
                 />
                 <Products
                     products={this.state.data}
