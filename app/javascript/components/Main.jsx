@@ -19,7 +19,7 @@ class Main extends React.Component {
     }
 
     loadProductsFromServer() {
-        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}&promo_code=${this.state.promoCode}&product_name=${this.state.productName}`;
+        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}&active_promo_code=${this.state.promoCode}&product_name=${this.state.productName}`;
 
         fetch(url)
             .then(response => {

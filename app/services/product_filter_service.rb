@@ -21,15 +21,15 @@ class ProductFilterService
     @products = @products.where(department_id: department_ids)
   end
 
-  def filter_by_promo_code(promo_code)
+  def filter_by_active_promo_code(promo_code)
     return if promo_code.blank?
 
-    @products = @products.include(:promotions).where(promotions: { code: promo_code })
+    @products = @products.includes(:promotions).where(promotions: { code: promo_code, active: true })
   end
 
   def filter_by_product_name(product_name)
     return if product_name.blank?
 
-    @products = @products.where('name LIKE ?', "%#{params[:product_name]}%")
+    @products = @products.where('name LIKE ?', "%#{product_name}%")
   end
 end
