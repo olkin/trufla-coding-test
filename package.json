@@ -6,7 +6,7 @@
   },
   "jest": {
     "roots": [
-      "spec/javascript"
+      "test/javascript"
     ]
   },
   "dependencies": {
