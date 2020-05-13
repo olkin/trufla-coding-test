@@ -4,8 +4,10 @@ class ProductFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentDepartment: props.department,
-            departments: [] };
+            department: props.department,
+            promoCode: props.promoCode,
+            departments: []
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,12 +27,12 @@ class ProductFilter extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState({currentDepartment: event.target.value});
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit({department: this.state.currentDepartment});
+        this.props.onSubmit({department: this.state.department, promoCode: this.state.promoCode});
     }
 
     render() {
@@ -39,13 +41,17 @@ class ProductFilter extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Pick department
-                        <select value={this.state.currentDepartment} onChange={this.handleChange}>
+                        <select name="department" value={this.state.department} onChange={this.handleChange}>
                             <option></option>
                             {this.state.departments.map( (department) =>
                                 <option key={department.id} value={department.id}>{department.name}</option>
                             )}
 
                         </select>
+                    </label>
+                    <label>
+                        Add promo code
+                        <input type="text" name="promoCode" value={this.state.promoCode} onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
                 </form>

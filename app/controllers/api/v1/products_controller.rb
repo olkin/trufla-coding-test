@@ -3,11 +3,9 @@ class Api::V1::ProductsController < Api::V1::BaseController
 
   def index
     @products = Product.order(created_at: :desc)
-    @products = @products.where(department_id: params[:department_id]) if params[:department_id]
+    @products = @products.where(department_id: params[:department_id]) if params[:department_id].present?
     @products = @products.includes(:active_promotions, :department)
     @products = @products.page(params[:page]).per(PER_PAGE)
-
-    puts @products.inspect
 
     render json: { products: @products.as_json(include: [:department, :active_promotions]),
                    meta: { total_count: @products.total_count, limit: PER_PAGE}}
