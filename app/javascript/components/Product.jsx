@@ -11,22 +11,22 @@ const Product = ({product}) => {
 
     return (
         <div>
-            <span className="product__department">
+            <span>
                 {product.department.name}
             </span>
-            <span className="product__name">
+            <span>
                 {product.name}
             </span>
-            <span className="product__price">
+            <span>
                 ${product.price}
             </span>
-            <span className="product__promo_code">
+            <span>
                 {promotion?.code}
             </span>
-            <span className="product__discount">
+            <span>
                 {discount}
             </span>
-            <span className="product__discounted_price">
+            <span>
                 ${discountedPrice}
             </span>
         </div>
