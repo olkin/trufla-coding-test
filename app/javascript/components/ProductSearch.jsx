@@ -11,17 +11,16 @@ const encodeQueryData = (data) => {
 
 const ProductSearch = (props) => {
     const pageLimit = 20;
-    const [page, setPage] = useState(1);
     const [products, setProducts] = useState([]);
     const [productTotal, setProductTotal] = useState(0);
-    const [filters, setFilters] = useState({department: '', promoCode: '', productName: ''});
+    const [filters, setFilters] = useState({data: {department: '', promoCode: '', productName: ''}, page: 1});
 
     const loadProductsFromServer = () => {
         const urlData = {
-            department_id: filters.department,
-            active_promo_code: filters.promoCode,
-            product_name: filters.productName,
-            page: page
+            department_id: filters.data.department,
+            active_promo_code: filters.data.promoCode,
+            product_name: filters.data.productName,
+            page: filters.page
         }
         const url = `/api/v1/products?${encodeQueryData(urlData)}`
 
@@ -42,14 +41,15 @@ const ProductSearch = (props) => {
         Math.ceil(productTotal / pageLimit);
 
 
-    useEffect(loadProductsFromServer, [filters, page]);
+    useEffect(loadProductsFromServer, [filters]);
 
     const handlePageClick = data =>
-        setPage(data.selected + 1);
+        setFilters(prevState => {
+            return {...prevState, ...{page: data.selected + 1}}
+        });
 
     const handleFilterSubmit = (filters) => {
-        // setPage(1);
-        setFilters(filters);
+        setFilters({data: filters, page: 1});
     };
 
     return (
