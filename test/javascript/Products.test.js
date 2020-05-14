@@ -7,17 +7,14 @@ jest.mock('../../app/javascript/components/Product');
 
 describe('Products', () => {
         it('shows data', () => {
-            const {getByText} = render (
+            const {getByText} = render(
                 <Products
                     products={[
                         {
                             id: 189,
-                            name: 'Teddy Bear',
-                            price: '123.99',
-                            active_promotions: [],
-                            department: 'Toys'
+                            name: 'Teddy Bear'
                         }
-                            ]}
+                    ]}
                     total={17}
                 />
             );

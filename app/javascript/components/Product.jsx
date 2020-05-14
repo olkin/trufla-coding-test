@@ -1,24 +1,27 @@
 import React from "react";
 
-const Product = ({department, name, price, promoCode, discount}) => {
+const Product = ({product}) => {
+    const promotion = product.active_promotions[0];
+    const discount = promotion?.discount;
+
     const priceWithDiscount = (price, discount) =>
-        (price - price * discount/100).toFixed(2);
+        (product.price - product.price * discount/100).toFixed(2);
     
-    const discountedPrice = discount ? priceWithDiscount(price, discount) : '';
+    const discountedPrice = discount ? priceWithDiscount(product.price, discount) : '';
 
     return (
         <div>
             <span className="product__department">
-                {department}
+                {product.department.name}
             </span>
             <span className="product__name">
-                {name}
+                {product.name}
             </span>
             <span className="product__price">
-                ${price}
+                ${product.price}
             </span>
             <span className="product__promo_code">
-                {promoCode}
+                {promotion?.code}
             </span>
             <span className="product__discount">
                 {discount}

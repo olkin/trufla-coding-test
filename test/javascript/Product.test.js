@@ -4,14 +4,22 @@ import Product from "../../app/javascript/components/Product";
 
 describe('Product', () => {
         it('shows data', () => {
-            const {getByText} = render (
-                <Product
-                    name="PName"
-                    price="123.99"
-                    promoCode="10_PLUS_10_OFF"
-                    discount={20}
-                    department="XYZ Store"
-                />
+            const product = {
+                name: "PName",
+                price: 123.99,
+                active_promotions: [
+                    {
+                        code: '10_PLUS_10_OFF',
+                        discount: 20
+                    }
+                ],
+                department: {
+                    name: 'XYZ Store'
+                }
+            };
+
+            const {getByText} = render(
+                <Product product={product} />
             );
 
             expect(getByText('PName')).toBeDefined();
@@ -22,14 +30,17 @@ describe('Product', () => {
         });
 
         it('shows data without promotion', () => {
-            const {getByText} = render (
-                <Product
-                    name="PName"
-                    price="123.99"
-                    promoCode=""
-                    discount=""
-                    department="XYZ Store"
-                />
+            const product = {
+                name: "PName",
+                price: 123.99,
+                active_promotions: [],
+                department: {
+                    name: 'XYZ Store'
+                }
+            };
+
+            const {getByText} = render(
+                <Product product={product} />
             );
 
             expect(getByText('PName')).toBeDefined();
