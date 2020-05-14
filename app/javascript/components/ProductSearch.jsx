@@ -3,6 +3,12 @@ import Products from "./Products";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
 
+const encodeQueryData = (data) => {
+    return Object.keys(data).map(function(key) {
+        return [key, data[key]].map(encodeURIComponent).join("=");
+    }).join("&");
+}
+
 const ProductSearch = (props) => {
     const pageLimit = 20;
     const [page, setPage] = useState(1);
@@ -10,9 +16,14 @@ const ProductSearch = (props) => {
     const [productTotal, setProductTotal] = useState(0);
     const [filters, setFilters] = useState({department: '', promoCode: '', productName: ''});
 
-
     const loadProductsFromServer = () => {
-        const url = `/api/v1/products?page=${page}&department_id=${filters.department}&active_promo_code=${filters.promoCode}&product_name=${filters.productName}&per_page=${pageLimit}`;
+        const urlData = {
+            department_id: filters.department,
+            active_promo_code: filters.promoCode,
+            product_name: filters.productName,
+            page: page
+        }
+        const url = `/api/v1/products?${encodeQueryData(urlData)}`
 
         fetch(url)
             .then(response => {
