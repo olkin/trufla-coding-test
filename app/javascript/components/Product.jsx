@@ -1,6 +1,11 @@
 import React from "react";
+import styled from 'styled-components';
 
-const Product = ({product}) => {
+const Discount = styled.td`
+  color: green;
+`;
+
+const Product = ({product) => {
     const promotion = product.active_promotions[0];
     const discount = promotion?.discount;
 
@@ -10,26 +15,26 @@ const Product = ({product}) => {
     const discountedPrice = discount ? priceWithDiscount(product.price, discount) : '';
 
     return (
-        <div>
-            <span>
+        <tr>
+            <td>
                 {product.department.name}
-            </span>
-            <span>
+            </td>
+            <td>
                 {product.name}
-            </span>
-            <span>
+            </td>
+            <td>
                 ${product.price}
-            </span>
-            <span>
+            </td>
+            <td>
                 {promotion?.code}
-            </span>
-            <span>
+            </td>
+            <Discount>
                 {discount}
-            </span>
-            <span>
+            </Discount>
+            <td>
                 ${discountedPrice}
-            </span>
-        </div>
+            </td>
+        </tr>
     );
 }
 
