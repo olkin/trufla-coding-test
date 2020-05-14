@@ -42,13 +42,13 @@ const ProductSearch = (props) => {
         Math.ceil(productTotal / pageLimit);
 
 
-    useEffect(loadProductsFromServer, [filters]);
+    useEffect(loadProductsFromServer, [filters, page]);
 
-    // handlePageClick = data =>
-    //     setPage(data.selected + 1);
+    const handlePageClick = data =>
+        setPage(data.selected + 1);
 
     const handleFilterSubmit = (filters) => {
-        setPage(1);
+        // setPage(1);
         setFilters(filters);
     };
 
@@ -60,19 +60,19 @@ const ProductSearch = (props) => {
                 products={products}
                 total={productTotal}
             />
-            {/*<ReactPaginate*/}
-            {/*    previousLabel={'previous'}*/}
-            {/*    nextLabel={'next'}*/}
-            {/*    breakLabel={'...'}*/}
-            {/*    breakClassName={'break-me'}*/}
-            {/*    pageCount={pageData.pageCount}*/}
-            {/*    marginPagesDisplayed={2}*/}
-            {/*    pageRangeDisplayed={5}*/}
-            {/*    onPageChange={handlePageClick}*/}
-            {/*    containerClassName={'pagination'}*/}
-            {/*    subContainerClassName={'pages pagination'}*/}
-            {/*    activeClassName={'active'}*/}
-            {/*/>*/}
+            <ReactPaginate
+                previousLabel={'previous'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                breakClassName={'break-me'}
+                pageCount={pageCount()}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination'}
+                subContainerClassName={'pages pagination'}
+                activeClassName={'active'}
+            />
         </>
     );
 }
