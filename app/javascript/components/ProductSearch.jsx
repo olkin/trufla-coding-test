@@ -2,6 +2,12 @@ import React, {useState, useEffect} from "react";
 import Products from "./Products";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
+import '../stylesheets/Pagination.scss'
+import styled from 'styled-components';
+
+const Pagination = styled.div`
+  text-align: center;
+`;
 
 const encodeQueryData = (data) => {
     return Object.keys(data).map(function(key) {
@@ -60,19 +66,21 @@ const ProductSearch = (props) => {
                 products={products}
                 total={productTotal}
             />
-            <ReactPaginate
-                previousLabel={'previous'}
-                nextLabel={'next'}
-                breakLabel={'...'}
-                breakClassName={'break-me'}
-                pageCount={pageCount()}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick}
-                containerClassName={'pagination'}
-                subContainerClassName={'pages pagination'}
-                activeClassName={'active'}
-            />
+            <Pagination>
+                <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    breakClassName={'paginationBreak'}
+                    pageCount={pageCount()}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={'paginationContainer'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
+                />
+            </Pagination>
         </>
     );
 }

@@ -5,14 +5,14 @@ const Discount = styled.td`
   color: green;
 `;
 
-const Product = ({product) => {
+const Product = ({product}) => {
     const promotion = product.active_promotions[0];
     const discount = promotion?.discount;
 
     const priceWithDiscount = (price, discount) =>
         (product.price - product.price * discount/100).toFixed(2);
     
-    const discountedPrice = discount ? priceWithDiscount(product.price, discount) : '';
+    const discountedPrice = discount ? `$${priceWithDiscount(product.price, discount)}` : '';
 
     return (
         <tr>
@@ -32,7 +32,7 @@ const Product = ({product) => {
                 {discount}
             </Discount>
             <td>
-                ${discountedPrice}
+                {discountedPrice}
             </td>
         </tr>
     );
