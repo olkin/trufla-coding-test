@@ -1,4 +1,5 @@
-import React, { useState, useEffect }  from "react";
+import React, { useState }  from "react";
+import DepartmentsDropdown from './DepartmentsDropdown';
 
 const ProductFilter = ({onSubmit}) => {
     const initialFilters = {
@@ -8,18 +9,6 @@ const ProductFilter = ({onSubmit}) => {
     };
 
     const [filters, setFilters] = useState(initialFilters);
-    const [departments, setDepartments] = useState([]);
-
-    useEffect(() => {
-        fetch("/api/v1/departments")
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Network response was not ok.");
-            })
-            .then(response => setDepartments(response))
-    }, []);
 
     const onFilterChange = (event) => {
         const changedFilter = {[event.target.name]: event.target.value};
@@ -43,24 +32,27 @@ const ProductFilter = ({onSubmit}) => {
             <form onSubmit={onFiltersSubmit}>
                 <label>
                     Pick department
-                    <select value={filters.department} name="department" onChange={onFilterChange}>
-                        <option></option>
-                        {departments.map((department) =>
-                            <option key={department.id} value={department.id}>
-                                {department.name}
-                            </option>
-                        )}
-                    </select>
+                    <DepartmentsDropdown
+                        department={filters.department}
+                        onChange={onFilterChange}
+                    />
                 </label>
                 <label>
                     Add promo code
-                    <input type="text" name="promoCode" value={filters.promoCode} onChange={onFilterChange}/>
+                    <input type="text"
+                           name="promoCode"
+                           value={filters.promoCode}
+                           onChange={onFilterChange}/>
                 </label>
                 <label>
                     Add product name
-                    <input type="text" name="productName" value={filters.productName} onChange={onFilterChange}/>
+                    <input type="text"
+                           name="productName"
+                           value={filters.productName}
+                           onChange={onFilterChange}/>
                 </label>
-                <input type="submit" value="Submit"/>
+                <input type="submit"
+                       value="Submit"/>
                 <button onClick={onReset}>Reset</button>
             </form>
         </div>
