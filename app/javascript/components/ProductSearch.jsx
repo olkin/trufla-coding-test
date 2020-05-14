@@ -1,25 +1,18 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Products from "./Products";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
 
-class ProductSearch extends React.Component {
-    initialState = {
-        data: [],
-        page: 1,
-        department: '',
-        promoCode: '',
-        productName: '',
-        productTotal: 0
-    };
+const ProductSearch = (props) => {
+    const pageLimit = 20;
+    const [page, setPage] = useState(1);
+    const [products, setProducts] = useState([]);
+    const [productTotal, setProductTotal] = useState(0);
+    const [filters, setFilters] = useState({department: '', promoCode: '', productName: ''});
 
-    constructor(props) {
-        super(props);
-        this.state = this.initialState;
-    }
 
-    loadProductsFromServer() {
-        const url = `/api/v1/products?page=${this.state.page}&department_id=${this.state.department}&active_promo_code=${this.state.promoCode}&product_name=${this.state.productName}`;
+    const loadProductsFromServer = () => {
+        const url = `/api/v1/products?page=${page}&department_id=${filters.department}&active_promo_code=${filters.promoCode}&product_name=${filters.productName}&per_page=${pageLimit}`;
 
         fetch(url)
             .then(response => {
@@ -28,68 +21,49 @@ class ProductSearch extends React.Component {
                 }
                 throw new Error("Network response was not ok.");
             })
-            .then(response => this.setState({
-                data: response.products,
-                productTotal: response.meta.total_count,
-                pageCount: Math.ceil(response.meta.total_count / response.meta.limit)
-            }))
+            .then(response => {
+                setProducts(response.products);
+                setProductTotal(response.meta.total_count);
+            })
     }
 
-    componentDidMount() {
-        this.loadProductsFromServer();
-    }
+    const pageCount = () =>
+        Math.ceil(productTotal / pageLimit);
 
-    handlePageClick = data => {
-        this.setState({ page: data.selected + 1 }, () => {
-            this.loadProductsFromServer();
-        });
+
+    useEffect(loadProductsFromServer, [filters]);
+
+    // handlePageClick = data =>
+    //     setPage(data.selected + 1);
+
+    const handleFilterSubmit = (filters) => {
+        setPage(1);
+        setFilters(filters);
     };
 
-    handleFilterSubmit = ({department, promoCode, productName}) => {
-        this.setState({ department: department, promoCode: promoCode, productName: productName, page: 1 }, () => {
-            this.loadProductsFromServer();
-        });
-    };
-
-    handleFilterReset = (event) => {
-        event.preventDefault();
-        this.setState(this.initialState, () => {
-            this.loadProductsFromServer();
-        });
-    }
-
-
-    render() {
-        return (
-            <>
-                <h1>Products</h1>
-                <ProductFilter
-                    onSubmit={this.handleFilterSubmit}
-                    onReset={this.handleFilterReset}
-                    department={this.state.department}
-                    promoCode={this.state.promoCode}
-                    productName={this.state.productName}
-                />
-                <Products
-                    products={this.state.data}
-                    total={this.state.productTotal}
-                />
-                <ReactPaginate
-                    previousLabel={'previous'}
-                    nextLabel={'next'}
-                    breakLabel={'...'}
-                    breakClassName={'break-me'}
-                    pageCount={this.state.pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={this.handlePageClick}
-                    containerClassName={'pagination'}
-                    subContainerClassName={'pages pagination'}
-                    activeClassName={'active'}
-                />
-            </>
-        );
-    }
+    return (
+        <>
+            <h1>Products</h1>
+            <ProductFilter onSubmit={handleFilterSubmit}/>
+            <Products
+                products={products}
+                total={productTotal}
+            />
+            {/*<ReactPaginate*/}
+            {/*    previousLabel={'previous'}*/}
+            {/*    nextLabel={'next'}*/}
+            {/*    breakLabel={'...'}*/}
+            {/*    breakClassName={'break-me'}*/}
+            {/*    pageCount={pageData.pageCount}*/}
+            {/*    marginPagesDisplayed={2}*/}
+            {/*    pageRangeDisplayed={5}*/}
+            {/*    onPageChange={handlePageClick}*/}
+            {/*    containerClassName={'pagination'}*/}
+            {/*    subContainerClassName={'pages pagination'}*/}
+            {/*    activeClassName={'active'}*/}
+            {/*/>*/}
+        </>
+    );
 }
 
 export default ProductSearch;

@@ -2,7 +2,6 @@ class ProductFilterService
   AVAILABLE_FILTERS = ['department_id', 'active_promo_code', 'product_name']
 
   def initialize(filters = {})
-    puts 'here'
     @products = Product.all
     set_filters(filters)
   end
@@ -32,6 +31,6 @@ class ProductFilterService
   end
 
   def filter_by_product_name(product_name)
-    @products = @products.where('name LIKE ?', "%#{product_name}%")
+    @products = @products.where('products.name LIKE ?', "%#{product_name}%")
   end
 end
