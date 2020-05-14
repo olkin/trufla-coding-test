@@ -28,34 +28,32 @@ const ProductFilter = ({onSubmit}) => {
     }
 
     return (
-        <div>
-            <form onSubmit={onFiltersSubmit}>
-                <label>
-                    Pick department
-                    <DepartmentsDropdown
-                        department={filters.department}
-                        onChange={onFilterChange}
-                    />
-                </label>
-                <label>
-                    Add promo code
-                    <input type="text"
-                           name="promoCode"
-                           value={filters.promoCode}
-                           onChange={onFilterChange}/>
-                </label>
-                <label>
-                    Add product name
-                    <input type="text"
-                           name="productName"
-                           value={filters.productName}
-                           onChange={onFilterChange}/>
-                </label>
-                <input type="submit"
-                       value="Submit"/>
-                <button onClick={onReset}>Reset</button>
-            </form>
-        </div>
+        <form onSubmit={onFiltersSubmit}>
+            <label>
+                Pick department
+                <DepartmentsDropdown
+                    department={filters.department}
+                    onChange={onFilterChange}
+                />
+            </label>
+            <label>
+                Add promo code
+                <input type="text"
+                       name="promoCode"
+                       value={filters.promoCode}
+                       onChange={onFilterChange}/>
+            </label>
+            <label>
+                Add product name
+                <input type="text"
+                       name="productName"
+                       value={filters.productName}
+                       onChange={onFilterChange}/>
+            </label>
+            <input type="submit"
+                   value="Submit"/>
+            <button onClick={onReset}>Reset</button>
+        </form>
     );
 }
 
