@@ -10,6 +10,8 @@ const Product = ({product}) => {
     
     const discountedPrice = discount ? `$${priceWithDiscount(product.price, discount)}` : '';
 
+    const discountDisplay = discount ? `-${discount}%` : '';
+
     return (
         <tr>
             <td>
@@ -25,7 +27,7 @@ const Product = ({product}) => {
                 {promotion?.code}
             </td>
             <Discount>
-                {discount}
+                {discountDisplay}
             </Discount>
             <td>
                 {discountedPrice}

@@ -15,7 +15,7 @@ const Products = ({products, total}) => {
                         <th>Product</th>
                         <th>Price</th>
                         <th>Promo code</th>
-                        <th>Discount, %</th>
+                        <th>Discount</th>
                         <th>Discounted price</th>
                     </tr>
                 </thead>
