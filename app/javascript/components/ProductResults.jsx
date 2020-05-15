@@ -1,8 +1,8 @@
 import React from "react";
-import Product from "./Product";
+import ProductRow from "./ProductRow";
 import {ResultStats, ResultsTable} from "./style";
 
-const Products = ({products, total}) => {
+const ProductResults = ({products, total}) => {
     return (
         <>
             <ResultStats>
@@ -21,8 +21,8 @@ const Products = ({products, total}) => {
                 </thead>
                 <tbody>
                     {products.map((product) =>
-                        <Product key={product.id}
-                                 product={product}
+                        <ProductRow key={product.id}
+                                    product={product}
                         />
                     )}
                 </tbody>
@@ -31,5 +31,5 @@ const Products = ({products, total}) => {
     );
 }
 
-export default Products;
+export default ProductResults;
 

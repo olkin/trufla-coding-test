@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Products from "./Products";
+import ProductResults from "./ProductResults";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
 import {Pagination} from "./style";
@@ -57,7 +57,7 @@ const ProductSearch = (props) => {
         <>
             <h1>Products</h1>
             <ProductFilter onSubmit={handleFilterSubmit}/>
-            <Products
+            <ProductResults
                 products={products}
                 total={productTotal}
             />

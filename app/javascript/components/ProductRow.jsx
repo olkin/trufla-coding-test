@@ -1,7 +1,7 @@
 import React from "react";
 import { Discount } from './style.js';
 
-const Product = ({product}) => {
+const ProductRow = ({product}) => {
     const promotion = product.active_promotions[0];
     const discount = promotion?.discount;
 
@@ -36,5 +36,5 @@ const Product = ({product}) => {
     );
 }
 
-export default Product;
+export default ProductRow;
 

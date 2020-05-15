@@ -1,14 +1,14 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import Products from "../../app/javascript/components/Products";
+import ProductResults from "../../app/javascript/components/ProductResults";
 
 
-jest.mock('../../app/javascript/components/Product');
+jest.mock('../../app/javascript/components/ProductRow');
 
-describe('Products', () => {
+describe('ProductResults', () => {
         it('shows data', () => {
             const {getByText} = render(
-                <Products
+                <ProductResults
                     products={[
                         {
                             id: 189,

@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from '@testing-library/react';
-import Product from "../../app/javascript/components/Product";
+import ProductRow from "../../app/javascript/components/ProductRow";
 
-describe('Product', () => {
+describe('ProductRow', () => {
         it('shows data', () => {
             const product = {
                 name: "PName",
@@ -19,7 +19,7 @@ describe('Product', () => {
             };
 
             const {getByText} = render(
-                <Product product={product} />
+                <table><tbody><ProductRow product={product} /></tbody></table>
             );
 
             expect(getByText('PName')).toBeDefined();
@@ -40,7 +40,7 @@ describe('Product', () => {
             };
 
             const {getByText} = render(
-                <Product product={product} />
+                <table><tbody><ProductRow product={product} /></tbody></table>
             );
 
             expect(getByText('PName')).toBeDefined();
