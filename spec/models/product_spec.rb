@@ -72,7 +72,6 @@ describe Product do
       it 'returns only active promotions' do
         expect(product.promotions).to match_array([new_active_promotion, active_promotion, deactivated_promotion])
         expect(product.active_promotions).to match_array([active_promotion, new_active_promotion])
-        expect(product.active_promotion).to eq new_active_promotion
       end
     end
   end
