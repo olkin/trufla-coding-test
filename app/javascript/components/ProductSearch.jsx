@@ -56,25 +56,31 @@ const ProductSearch = (props) => {
         <>
             <h1>Products</h1>
             <FilterForm onSubmit={handleFilterSubmit}/>
-            <ProductResults
-                products={products}
-                total={productTotal}
-            />
-            <Pagination>
-                <ReactPaginate
-                    previousLabel={'previous'}
-                    nextLabel={'next'}
-                    breakLabel={'...'}
-                    breakClassName={'paginationBreak'}
-                    pageCount={pageCount()}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={handlePageClick}
-                    containerClassName={'paginationContainer'}
-                    activeClassName={'active'}
-                    forcePage={filters.page - 1}
-                />
-            </Pagination>
+            {products.length > 0
+                ? <>
+                    <ProductResults
+                        products={products}
+                        total={productTotal}
+                    />
+                    <Pagination>
+                        <ReactPaginate
+                            previousLabel={'previous'}
+                            nextLabel={'next'}
+                            breakLabel={'...'}
+                            breakClassName={'paginationBreak'}
+                            pageCount={pageCount()}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={handlePageClick}
+                            containerClassName={'paginationContainer'}
+                            activeClassName={'active'}
+                            forcePage={filters.page - 1}
+                        />
+                    </Pagination>
+                </>
+                :
+                <div>No results. Update filters and try again</div>
+            }
         </>
     );
 }
