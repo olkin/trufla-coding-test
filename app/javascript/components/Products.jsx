@@ -1,14 +1,6 @@
 import React from "react";
-import styled from 'styled-components';
 import Product from "./Product";
-
-const ResultStats = styled.div`
-  margin: 20px 0px; 
-`;
-
-const ResultsTable = styled.table`
-  border-spacing: 20px 0px;
-`;
+import {ResultStats, ResultsTable} from "./style";
 
 const Products = ({products, total}) => {
     return (

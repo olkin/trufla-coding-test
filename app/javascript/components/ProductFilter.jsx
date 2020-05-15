@@ -1,40 +1,6 @@
 import React, { useState }  from "react";
 import DepartmentsDropdown from './DepartmentsDropdown';
-import styled from 'styled-components';
-
-const Button = styled.input`
-  background-color: transparent;
-  border: 1px solid #328FA8;
-  color: inherit;
-  padding: 10px 20px;
-  margin: 8px 0;
-  border-radius: 4px;
-  cursor: pointer;
-`;
-
-const SubmitButton = styled(Button)`
-  background-color: #328FA8;
-  color: white;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: row;
-  align-items: flex-end;
-`;
-
-const Label = styled.label`
-    margin: 5px 10px;
-`;
-
-const TextInput = styled.input`
-  //vertical-align: middle;
-  // margin-left: 10px;
-  width: 90%;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;  
-`;
+import {Button, SubmitButton, Form, Label, TextInput} from "./style";
 
 const ProductFilter = ({onSubmit}) => {
     const initialFilters = {
