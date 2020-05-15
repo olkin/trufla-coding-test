@@ -41,7 +41,6 @@ const ProductSearch = (props) => {
     const pageCount = () =>
         Math.ceil(productTotal / pageLimit);
 
-
     useEffect(loadProductsFromServer, [filters]);
 
     const handlePageClick = data =>
@@ -73,6 +72,7 @@ const ProductSearch = (props) => {
                     onPageChange={handlePageClick}
                     containerClassName={'paginationContainer'}
                     activeClassName={'active'}
+                    forcePage={filters.page - 1}
                 />
             </Pagination>
         </>
