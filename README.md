@@ -1,5 +1,60 @@
 # ReactJS Challenge
 
+[How to run the project]()
+
+[Task Definition]()
+
+## Solution
+
+Solution can be found at https://olga-trufla-code-test.herokuapp.com
+
+## How to run the project
+### Prerequisites
+- Rails 5.2.4.2
+- Node 14.1.0
+
+### Steps
+#### Step 1. Clone this repository 
+E.g. to clone using SSH 
+
+`git clone https://github.com/olkin/trufla-coding-test.git`
+
+This will create `trufla-coding-test/` directory on your machine.
+
+
+#### Step 2. Get into repository
+
+`cd trufla-coding-test/`
+
+#### Step 3. Install dependencies
+
+```
+bundle install
+yarn install
+```
+
+#### Step 4. Create database
+
+`rails db:setup`
+
+This step will create `code-challenge_development` database and will run all migrations
+
+#### Step 5. Run seeds
+
+`echo 'load "db/seeds.rb" ' | rails c`
+
+#### Step 6. Run application
+
+`rails s`
+
+Application will run under [localhost:3000](localhost:3000)
+
+
+
+
+
+
+## Task Definition
 Create a database populated with data using a schema similar to below:
 
 | Table | Field |
@@ -41,7 +96,7 @@ Your deliverables for the challenge have to fulfill the below requirements:
 
 - The frontend should be built using ReactJS.
 
-# Bonus
+### Bonus
 
 - Well documented readme to run the project 
 - Create the frontend using separate components utilizing React Hooks
