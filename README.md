@@ -12,10 +12,6 @@
 Solution can be found at https://olga-trufla-code-test.herokuapp.com
 
 ## How to run the project
-### Prerequisites
-- Rails 5.2.4.2
-- Node 14.1.0
-
 ### Steps
 #### Step 1. Clone this repository 
 E.g. to clone using SSH 
