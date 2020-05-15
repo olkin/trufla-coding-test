@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ProductResults from "./ProductResults";
 import ReactPaginate from 'react-paginate';
-import ProductFilter from "./ProductFilter";
+import FilterForm from "./FilterForm";
 import {Pagination} from "./style";
 
 const encodeQueryData = (data) => {
@@ -56,7 +56,7 @@ const ProductSearch = (props) => {
     return (
         <>
             <h1>Products</h1>
-            <ProductFilter onSubmit={handleFilterSubmit}/>
+            <FilterForm onSubmit={handleFilterSubmit}/>
             <ProductResults
                 products={products}
                 total={productTotal}

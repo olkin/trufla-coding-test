@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react';
-import ProductFilter from "../../app/javascript/components/ProductFilter";
+import FilterForm from "../../app/javascript/components/FilterForm";
 
 jest.mock('../../app/javascript/components/DepartmentsDropdown');
 
@@ -9,7 +9,7 @@ describe('ProductFilter', () => {
             const mockOnSubmit = jest.fn();
 
             const {getByText, getByLabelText, container} = render(
-                <ProductFilter
+                <FilterForm
                     onSubmit={mockOnSubmit}
                 />
             );
@@ -30,7 +30,7 @@ describe('ProductFilter', () => {
         it('updates department', () => {
             const mockOnSubmit = jest.fn();
             const {getByLabelText, getByText} = render(
-                <ProductFilter
+                <FilterForm
                     onSubmit={mockOnSubmit}
                 />
             );
@@ -43,7 +43,7 @@ describe('ProductFilter', () => {
         it('updates product name', () => {
             const mockOnSubmit = jest.fn();
             const {getByLabelText} = render(
-                <ProductFilter
+                <FilterForm
                     onSubmit={mockOnSubmit}
                 />
             );
@@ -55,7 +55,7 @@ describe('ProductFilter', () => {
         it('updates promo code', () => {
             const mockOnSubmit = jest.fn();
             const {getByLabelText} = render(
-                <ProductFilter
+                <FilterForm
                     onSubmit={mockOnSubmit}
                 />
             );

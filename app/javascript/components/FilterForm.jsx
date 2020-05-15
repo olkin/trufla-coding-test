@@ -2,7 +2,7 @@ import React, { useState }  from "react";
 import DepartmentsDropdown from './DepartmentsDropdown';
 import {Button, SubmitButton, Form, Label, TextInput} from "./style";
 
-const ProductFilter = ({onSubmit}) => {
+const FilterForm = ({onSubmit}) => {
     const initialFilters = {
         department: '',
         promoCode: '',
@@ -25,7 +25,7 @@ const ProductFilter = ({onSubmit}) => {
 
     const onReset = () => {
         setFilters(initialFilters);
-        onSubmit(filters);
+        onSubmit(initialFilters);
     }
 
     return (
@@ -57,4 +57,4 @@ const ProductFilter = ({onSubmit}) => {
     );
 }
 
-export default ProductFilter;
+export default FilterForm;
