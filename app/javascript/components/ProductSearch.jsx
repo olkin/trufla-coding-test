@@ -2,11 +2,36 @@ import React, {useState, useEffect} from "react";
 import Products from "./Products";
 import ReactPaginate from 'react-paginate';
 import ProductFilter from "./ProductFilter";
-import '../stylesheets/Pagination.scss'
 import styled from 'styled-components';
 
 const Pagination = styled.div`
   text-align: center;
+  
+  .paginationContainer {
+       display: inline-block;
+    
+        li {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+    
+            &.disabled {
+                color: #808791;
+            }
+        }
+    
+        li:not(.disabled):not(.paginationBreak) {
+            &.active {
+                background-color: #328FA8;
+                color: white;
+            }
+    
+            &:hover:not(.active) {
+                background-color: #328FA8;
+                color: white;
+            }
+        }
+    }
 `;
 
 const encodeQueryData = (data) => {
