@@ -14,9 +14,9 @@ describe('ProductFilter', () => {
                 />
             );
 
-            fireEvent.change(getByLabelText("Pick department"), {target: {value: '19'}});
-            fireEvent.change(getByLabelText("Add promo code"), {target: {value: 'PROMO X'}});
-            fireEvent.change(getByLabelText("Add product name"), {target: {value: 'Teddy'}});
+            fireEvent.change(getByLabelText("Pick department:"), {target: {value: '19'}});
+            fireEvent.change(getByLabelText("Enter promo code:"), {target: {value: 'PROMO X'}});
+            fireEvent.change(getByLabelText("Enter partial product name:"), {target: {value: 'Teddy'}});
 
             fireEvent.submit(container.querySelector('form'));
             expect(mockOnSubmit.mock.calls.length).toBe(1);
@@ -35,7 +35,7 @@ describe('ProductFilter', () => {
                 />
             );
 
-            fireEvent.change(getByLabelText("Pick department", {selector: 'select'}), {target: {value: '19'}});
+            fireEvent.change(getByLabelText("Pick department:", {selector: 'select'}), {target: {value: '19'}});
             // TODO: having troubles with this test
             //expect(container.querySelector('select').val).toEqual('Department Mockster');
         });
@@ -48,8 +48,8 @@ describe('ProductFilter', () => {
                 />
             );
 
-            fireEvent.change(getByLabelText("Add product name"), {target: {value: 'Teddy'}});
-            expect(getByLabelText("Add product name").value).toBe('Teddy');
+            fireEvent.change(getByLabelText("Enter partial product name:"), {target: {value: 'Teddy'}});
+            expect(getByLabelText("Enter partial product name:").value).toBe('Teddy');
         });
 
         it('updates promo code', () => {
@@ -60,8 +60,8 @@ describe('ProductFilter', () => {
                 />
             );
 
-            fireEvent.change(getByLabelText("Add promo code"), {target: {value: 'PROMO X'}});
-            expect(getByLabelText("Add promo code").value).toBe('PROMO X');
+            fireEvent.change(getByLabelText("Enter promo code:"), {target: {value: 'PROMO X'}});
+            expect(getByLabelText("Enter promo code:").value).toBe('PROMO X');
         });
     }
 )

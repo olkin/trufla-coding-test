@@ -31,21 +31,21 @@ const FilterForm = ({onSubmit}) => {
     return (
         <Form onSubmit={onFiltersSubmit}>
             <Label>
-                Pick department
+                Pick department:
                 <DepartmentsDropdown
                     department={filters.department}
                     onChange={onFilterChange}
                 />
             </Label>
             <Label>
-                Add promo code
+                Enter promo code:
                 <TextInput type="text"
                        name="promoCode"
                        value={filters.promoCode}
                        onChange={onFilterChange}/>
             </Label>
             <Label>
-                Add product name
+                Enter partial product name:
                 <TextInput type="text"
                        name="productName"
                        value={filters.productName}
