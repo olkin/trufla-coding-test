@@ -1,8 +1,11 @@
 # ReactJS Challenge
 
-[How to run the project]()
+[Solution](#solution)
 
-[Task Definition]()
+[How to run the project](#how-to-run-the-project)
+
+[Task Definition](#task-definition)
+
 
 ## Solution
 
@@ -41,17 +44,25 @@ This step will create `code-challenge_development` database and will run all mig
 
 #### Step 5. Run seeds
 
+This application has no way yet to create products via UI. Objects can be created directly in DB or you can use these seeds for development:
+
 `echo 'load "db/seeds.rb" ' | rails c`
 
 #### Step 6. Run application
 
 `rails s`
 
-Application will run under [localhost:3000](localhost:3000)
+Application will run under [localhost:3000](http://localhost:3000)
 
 
+#### Step 7. Run tests
+```
+# Rails specs
+rspec
 
-
+# Jest tests
+yarn test
+```
 
 
 ## Task Definition
