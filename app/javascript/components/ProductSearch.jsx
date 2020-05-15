@@ -77,7 +77,6 @@ const ProductSearch = (props) => {
                     pageRangeDisplayed={5}
                     onPageChange={handlePageClick}
                     containerClassName={'paginationContainer'}
-                    subContainerClassName={'pages pagination'}
                     activeClassName={'active'}
                 />
             </Pagination>

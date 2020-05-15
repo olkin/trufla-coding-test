@@ -1,5 +1,40 @@
 import React, { useState }  from "react";
 import DepartmentsDropdown from './DepartmentsDropdown';
+import styled from 'styled-components';
+
+const Button = styled.input`
+  background-color: transparent;
+  border: 1px solid #328FA8;
+  color: inherit;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const SubmitButton = styled(Button)`
+  background-color: #328FA8;
+  color: white;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end;
+`;
+
+const Label = styled.label`
+    margin: 5px 10px;
+`;
+
+const TextInput = styled.input`
+  //vertical-align: middle;
+  // margin-left: 10px;
+  width: 90%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;  
+`;
 
 const ProductFilter = ({onSubmit}) => {
     const initialFilters = {
@@ -28,32 +63,31 @@ const ProductFilter = ({onSubmit}) => {
     }
 
     return (
-        <form onSubmit={onFiltersSubmit}>
-            <label>
+        <Form onSubmit={onFiltersSubmit}>
+            <Label>
                 Pick department
                 <DepartmentsDropdown
                     department={filters.department}
                     onChange={onFilterChange}
                 />
-            </label>
-            <label>
+            </Label>
+            <Label>
                 Add promo code
-                <input type="text"
+                <TextInput type="text"
                        name="promoCode"
                        value={filters.promoCode}
                        onChange={onFilterChange}/>
-            </label>
-            <label>
+            </Label>
+            <Label>
                 Add product name
-                <input type="text"
+                <TextInput type="text"
                        name="productName"
                        value={filters.productName}
                        onChange={onFilterChange}/>
-            </label>
-            <input type="submit"
-                   value="Submit"/>
-            <button onClick={onReset}>Reset</button>
-        </form>
+            </Label>
+            <SubmitButton type="submit" value="Submit"/>
+            <Button type="button" onClick={onReset} value="Reset" />
+        </Form>
     );
 }
 
